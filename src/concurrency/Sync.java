@@ -3,6 +3,7 @@ package concurrency;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 class Sync extends Thread {
     List nums = new ArrayList<>();
@@ -21,13 +22,11 @@ class Sync extends Thread {
         }
     }
 
-    public static void main(String[] args)  {
+    public static void main(String[] args) throws InterruptedException {
         Sync syncThread = new Sync("sync thread");
         syncThread.start();
-
+        TimeUnit.SECONDS.sleep(10);
         System.out.println(syncThread.nums);
         //this prints out an empty list. write some code that will allow the data generated in the syncThread to show up  here.  There is a brute force way and a more sophisticated way.  Either or will work, but strive for sophistication :)
-
     }
-    
 }
